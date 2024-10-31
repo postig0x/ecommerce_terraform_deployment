@@ -77,7 +77,10 @@ pipeline {
       // }
       steps {
         dir('Terraform') {
-          sh 'terraform plan -out plan.tfplan'
+          sh '''#!/bin/bash
+          source /etc/environment
+          terraform plan -out plan.tfplan -var="default_key_name=${default_key_name}" -var="ssh_key=${ssh_key}"
+          '''
         }
       }
     }
