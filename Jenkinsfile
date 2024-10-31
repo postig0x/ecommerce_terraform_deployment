@@ -55,23 +55,40 @@ pipeline {
           sh 'terraform init' 
         }
        }
-    } 
+    }
+
+    stage('Terraform Destroy') {
+      when {
+        branch 'main'
+      }
+      steps {
+        dir('Terraform') {
+          sh 'terraform destroy -auto-approve'
+        }
+      }
+    }
      
     stage('Plan') {
       when {
         branch 'main'
       }
+      // steps {
+      //   withCredentials([
+      //     string(credentialsId: 'AWS_ACCESS_KEY', variable: 'aws_access_key'),
+      //     string(credentialsId: 'AWS_SECRET_KEY', variable: 'aws_secret_key')
+      //   ]) {
+      //     dir('Terraform') {
+      //       sh 'terraform plan -out plan.tfplan -var="aws_access_key=${aws_access_key}" -var="aws_secret_key=${aws_secret_key}"' 
+      //     }
+      //   }
+      // }
       steps {
-        withCredentials([
-          string(credentialsId: 'AWS_ACCESS_KEY', variable: 'aws_access_key'),
-          string(credentialsId: 'AWS_SECRET_KEY', variable: 'aws_secret_key')
-        ]) {
-          dir('Terraform') {
-            sh 'terraform plan -out plan.tfplan -var="aws_access_key=${aws_access_key}" -var="aws_secret_key=${aws_secret_key}"' 
-          }
+        dir('Terraform') {
+          sh 'terraform plan -out plan.tfplan'
         }
-      }     
+      }
     }
+    
     stage('Apply') {
       when {
         branch 'main'
