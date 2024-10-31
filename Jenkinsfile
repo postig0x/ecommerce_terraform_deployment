@@ -15,14 +15,6 @@ pipeline {
         }
         dir('frontend') {
           sh '''#!/bin/bash
-          # install node if doesn't exist
-          if ! command -v node &> /dev/null
-          then
-            curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-            sudo apt install -y nodejs
-            sleep 2
-          fi
-          
           npm i
           export NODE_OPTIONS=--openssl-legacy-provider
           '''
