@@ -35,6 +35,10 @@ After familiarizing myself with the e-commerce app I am deploying, I move forwar
 
 ## Issues/Troubleshooting
 
+Initial system design, made before building out full infrastructure:
+
+![initial_system_design](screenshots/initial_system_design.png)
+
 ## Optimization
 
 ## Business Intelligence
