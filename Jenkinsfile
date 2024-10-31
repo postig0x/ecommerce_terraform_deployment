@@ -27,7 +27,7 @@ pipeline {
       }
       steps {
         sh '''#!/bin/bash
-        source venv/bin/activate
+        source backend/venv/bin/activate
         pip install pytest-django
         python backend/manage.py makemigrations
         python backend/manage.py migrate
