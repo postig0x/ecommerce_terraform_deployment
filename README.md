@@ -27,6 +27,10 @@ After familiarizing myself with the e-commerce app I am deploying, I move forwar
   1. EC2 instances should run `frontend_setup.sh` and `backend_setup.sh` as appropriate to initialize frontend and backend servers, along with connection to the RDS instance.
 3.
 
+### Jenkins Build Status
+
+![jenkins build status](screenshots/jenkins_build_status.png)
+
 ## System Design Diagram
 
 ## Issues/Troubleshooting
