@@ -53,7 +53,7 @@ pipeline {
       }
       steps {
         dir('Terraform') {
-          sh '''
+          sh '''#!/bin/bash
           source /etc/environment
           terraform destroy -auto-approve -var="default_key_name=${default_key_name}" -var="ssh_key=${ssh_key}"
           '''
@@ -88,7 +88,7 @@ pipeline {
       }
       steps {
         dir('Terraform') {
-          sh '''
+          sh '''#!/bin/bash
           source /etc/environment
           terraform apply plan.tfplan -var="default_key_name=${default_key_name}" -var="ssh_key=${ssh_key}"
           ''' 
