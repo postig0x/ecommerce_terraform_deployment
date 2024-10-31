@@ -93,7 +93,7 @@ pipeline {
         dir('Terraform') {
           sh '''#!/bin/bash
           source /etc/environment
-          terraform apply plan.tfplan -var="default_key_name=${default_key_name}" -var="ssh_key=${ssh_key}"
+          terraform apply "plan.tfplan" -var="default_key_name=${default_key_name}" -var="ssh_key=${ssh_key}"
           ''' 
         }
       }  
