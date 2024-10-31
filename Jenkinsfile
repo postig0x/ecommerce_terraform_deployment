@@ -34,13 +34,15 @@ pipeline {
         branch 'main'
       }
       steps {
-        sh '''#!/bin/bash
-        <code to activate virtual environment>
-        pip install pytest-django
-        python backend/manage.py makemigrations
-        python backend/manage.py migrate
-        pytest backend/account/tests.py --verbose --junit-xml test-reports/results.xml
-        ''' 
+        dir('backend') {
+          sh '''#!/bin/bash
+          source venv/bin/activate
+          pip install pytest-django
+          python backend/manage.py makemigrations
+          python backend/manage.py migrate
+          pytest backend/account/tests.py --verbose --junit-xml test-reports/results.xml
+          '''
+        } 
       }
     }
    
