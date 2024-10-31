@@ -35,6 +35,14 @@ After familiarizing myself with the e-commerce app I am deploying, I move forwar
 
 ## Business Intelligence
 
+2. In order to count the rows of data in each table, you can run the following query:
+
+```sql
+SELECT COUNT(*) FROM <table_name>;
+```
+
+3.
+
 ## Conclusion
 
 Creating IAM role for Terraform AWS access:
